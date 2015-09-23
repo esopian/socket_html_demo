@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1>{{title}}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 articles">
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var socket = io();
+      socket.on('article', function (data) {
+        console.log('Heard a new Article');
+        $(data.html).appendTo('.articles');
+      })
+    </script>
+
+
+  </body>
+</html>
